@@ -43,7 +43,6 @@ const ProductDesc = ({ match }) => {
                         <hr />
                         <h1>Select Quantity</h1>
                         <select value={qty} onChange={(e) => {
-                            console.log(e.target.value);
                             setqty(e.target.value)
                         }}>
                             {[...Array(product.countInStock).keys()].map((x, i) => {
