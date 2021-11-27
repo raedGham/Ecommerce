@@ -1,0 +1,37 @@
+.navbar-style {
+  background-color: #2a67ad !important;
+}
+
+.navbar {
+  background-color: #2a67ad !important;
+}
+
+
+.nav-link, .navbar-brand{
+  color:white !important;
+}
+
+h1 {
+  font-size: 18px !important;
+  color: black !important;
+}
+
+.img-fluid {
+  height: 200px !important;
+  display: block;
+  margin-right:auto !important;
+  margin-left: auto !important;
+}
+
+.bold {
+font-weight: 700 !important;
+}
+
+.bigimg {
+  height: 300px !important;
+}
+
+.ratings {
+
+  color: orange !important;
+}
