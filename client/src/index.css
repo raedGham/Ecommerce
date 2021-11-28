@@ -35,3 +35,9 @@ font-weight: 700 !important;
 
   color: orange !important;
 }
+
+.btn {
+  background-color: black !important;
+  color: white !important;
+  width: 200px;
+}

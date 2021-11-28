@@ -1,16 +1,19 @@
 import React from 'react';
-import { useState, UseDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, deleteFromCart } from '../actions/cartActions';
 
 
 const Cartscreen = () => {
 
-    const addtocartreducer = useSelector(state => state.addToCartReducer)
-    const { cartItems } = addtocartreducer;
+    const cartreducer = useSelector(state => state.cartReducer)
+    const { cartItems } = cartreducer;
+    const dispatch = useDispatch();
 
+    let subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
     return <div>
         <div className="row  mt-5 justify-content-center">
-            <div className="col-md-8">
+            <div className="col-md-8 card">
                 <h1 className="text-center m-3"> MY CART</h1>
                 <table className="table table-bordered text-center">
                     <thead>
@@ -26,7 +29,7 @@ const Cartscreen = () => {
                         {cartItems.map(item => {
                             return (
                                 <tr>
-                                    <td> {item.name}  </td>
+                                    <td className="text-left"> {item.name}  </td>
                                     <td> {item.price}  </td>
                                     <td>
                                         <select
@@ -34,7 +37,7 @@ const Cartscreen = () => {
                                             value={item.qty}
                                             name="qty"
                                             id=""
-                                        //onChange={(e) => { setqty(e.target.value) }}
+                                            onChange={(e) => { dispatch(addToCart(item, e.target.value)) }}
                                         >
 
                                             {[...Array(item.countInStock).keys()].map((x, i) => {
@@ -42,7 +45,8 @@ const Cartscreen = () => {
                                             })}
                                         </select>  </td>
                                     <td> {item.price * item.qty}  </td>
-                                    <td> <i className="far fa-trash-alt"></i>  </td>
+                                    <td> <i className="far fa-trash-alt"
+                                        onClick={() => dispatch(deleteFromCart(item))}></i>  </td>
 
 
                                 </tr>)
@@ -50,8 +54,16 @@ const Cartscreen = () => {
 
                     </tbody>
 
-                </table>
 
+
+
+                </table>
+                <hr />
+                <h2 className="text-center">SUBTOTAL : {subtotal} RS</h2>
+                <hr />
+                <div className="text-center p-3">
+                    <button className="btn">PAY NOW</button>
+                </div>
             </div>
         </div>
     </div>;

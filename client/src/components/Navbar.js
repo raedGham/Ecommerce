@@ -1,13 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 
 
 const Navbar = () => {
 
-    const addtocartreducer = useSelector(state => state.addToCartReducer)
-    const { cartItems } = addtocartreducer;
+    const cartreducer = useSelector(state => state.cartReducer)
+    const { cartItems } = cartreducer;
 
     console.log("navbar", cartItems)
     return (
