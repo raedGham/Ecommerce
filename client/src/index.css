@@ -45,3 +45,7 @@ font-weight: 700 !important;
 input {
   margin-top:  15px !important;
 }
+
+li {
+  color: white;
+}
