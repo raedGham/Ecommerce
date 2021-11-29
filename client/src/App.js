@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Cartscreen from "./screens/Cartscreen";
 import Homescreen from "./screens/Homescreen";
 import ProductDesc from "./screens/ProductDesc";
+import Register from "./screens/Register";
+import Login from "./screens/Login";
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" exact component={Homescreen} />
         <Route path="/product/:id" exact component={ProductDesc} />
         <Route path="/cart" component={Cartscreen} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </BrowserRouter>
 
     </div>

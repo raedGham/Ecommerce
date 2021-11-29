@@ -41,3 +41,7 @@ font-weight: 700 !important;
   color: white !important;
   width: 200px;
 }
+
+input {
+  margin-top:  15px !important;
+}

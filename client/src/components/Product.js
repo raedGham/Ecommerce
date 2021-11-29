@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Rating from 'react-rating';
 
-// mongodb+srv://raed:16101974@cluster0.vhuyr.mongodb.net/mern-ecommerce
+
 
 const Product = ({ product }) => {
     return (
