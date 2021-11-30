@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector , useDispatch} from 'react-redux';
+import { logoutUser } from '../actions/userActions';
 
 
 
@@ -10,7 +10,7 @@ const Navbar = () => {
     const { cartItems } = cartreducer;
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
+     const dispatch = useDispatch();
     return (
         <div>
             <nav className="navbar navbar-expand-lg ">
@@ -30,7 +30,8 @@ const Navbar = () => {
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a className="dropdown-item" href="/profile">Profile</a>
                                     <a className="dropdown-item" href="/orders">Orders</a>
-                                    <a className="dropdown-item" >Logout</a>
+                                    <li className="dropdown-item" onClick={()=> {  dispatch(logoutUser())}}>Logout</li>                                                                            
+                                                                                   
                                 </div>
                             </div>
 

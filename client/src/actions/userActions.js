@@ -25,7 +25,7 @@ export const loginUser = (user) => dispatch => {
     axios.post("/api/users/login", user)
         .then(res => {
             dispatch({ type: 'USER_LOGIN_SUCCESS' })
-            console.log(res.data);
+         
             localStorage.setItem("currentUser", JSON.stringify(res.data));
             window.location.href = "/";
         })
@@ -35,3 +35,14 @@ export const loginUser = (user) => dispatch => {
             console.log(err)
         })
 };
+
+
+export const logoutUser = () => dispatch => {
+    
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("cartItems");
+    dispatch({type: 'USER_LOGOUT'});
+    window.location.href= "/login"
+
+}
+

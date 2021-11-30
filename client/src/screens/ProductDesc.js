@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductById } from '../actions/productActions';
 import { addToCart } from '../actions/cartActions';
+import Loader from '../components/loader';
+import Error from '../components/error';
 
 
 const ProductDesc = ({ match }) => {
@@ -28,7 +30,7 @@ const ProductDesc = ({ match }) => {
     }
     return (<div>
 
-        {loading ? (<h1>Loading ...</h1>) : error ? (<h1>Something went wrong</h1>) : (
+        {loading ? (<Loader/>) : error ? (<Error  error="Something went wrong"/>) : (
             <div className="row">
                 <div className="col-md-6">
                     <div className="card p-3 m-2">

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import {registerNewUser} from '../actions/userActions';
+import Loader from '../components/loader';
+import Error from '../components/error';
+import Success from '../components/success';
+
+
 function Register() {
 
     const [name, setname] = useState('');
@@ -9,7 +14,10 @@ function Register() {
     const [cpassword, setcpassword] = useState('');
 
     const dispatch = useDispatch();
-    
+
+    const registernewuserreducer = useSelector(state => state.registerNewUserReducer);
+    const {error, loading, success} = registernewuserreducer;
+
  
     
 const register = (e) => {
@@ -40,7 +48,15 @@ e.preventDefault()
                  
                     <div>
                      <h1 className="text-center">Register</h1> 
-                     <form onSubmit={register}>
+
+                     {loading && (<Loader/>)}
+                     {error && (<Error error="Email Address Exists"/>)}
+                     {success && (<Success success ="Registration successfull"/>)}
+                     
+
+
+                     <form onSubmit={register}>                  
+
                             <input type="text" placeholder="name" className="form-control" value={name} required onChange={(e)=>{setname(e.target.value)}}/>
                             <input type="text" placeholder="email" className="form-control" value={email} required onChange={(e)=>{setemail(e.target.value)}}/>
                             <input type="password" placeholder="password" className="form-control" value={password} required onChange={(e)=>{setpassword(e.target.value)}}/>
@@ -48,6 +64,7 @@ e.preventDefault()
                             
                             < div className="text-right">
                             <button  type = "Submit" className="btn mt-3"  >Register</button>
+                            
                             </div>
                      </form>
                             

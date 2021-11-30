@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../actions/userActions';
-
+import Error from '../components/error';
+import Loader from '../components/loader';
 
 function Login() {
-    const [name, setname] = useState('');
+    
+    const loginreducer = useSelector(state => state.loginReducer);
+    const {error, loading} = loginreducer;
+
+  console.log(error);
+    
+
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
 
@@ -45,13 +52,18 @@ function Login() {
                         <h2 className="text-center">Login</h2>
                         <form onSubmit={login}>
 
-                            <input type="text" placeholder="email" className="form-control" value={email} required onChange={(e) => { setemail(e.target.value) }} />
+
+                        {error && (<Error error="Invalid Credentials"/>)}
+                        {loading && (<Loader/>)}
+                                                            <input type="text" placeholder="email" className="form-control" value={email} required onChange={(e) => { setemail(e.target.value) }} />
                             <input type="password" placeholder="password" className="form-control" value={password} required onChange={(e) => { setpassword(e.target.value) }} />
 
 
                             < div className="text-right">
                                 <button type="Submit" className="btn mt-3"  >Login</button>
+
                             </div>
+                            <a href="/register">Click Here to Register</a>
                         </form>
 
                     </div>
